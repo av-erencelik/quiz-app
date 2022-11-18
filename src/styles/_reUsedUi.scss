@@ -1,0 +1,21 @@
+.title {
+  color: $blue;
+  letter-spacing: 0.1rem;
+}
+.button {
+  border: none;
+  background-color: $blue;
+  color: $grey;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  border: 2px solid $blue;
+  transition: all 0.4s;
+  cursor: pointer;
+  &:hover {
+    background-color: $grey;
+    color: $blue;
+  }
+}

@@ -4,10 +4,10 @@ export default function Nav() {
   return (
     <ul className="nav">
       <li className="link">
-        <Button>New Quiz</Button>
+        <Button>NEW QUIZ</Button>
       </li>
       <li className="link">
-        <Button>Restart Quiz</Button>
+        <Button>RESTART QUIZ</Button>
       </li>
     </ul>
   );

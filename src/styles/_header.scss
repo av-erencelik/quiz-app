@@ -3,5 +3,20 @@
   height: 7vh;
   justify-content: space-between;
   align-items: center;
-  background-color: $black;
+  background-color: $grey;
+  padding: 2rem;
+  .header-title {
+    font-size: 3rem;
+  }
+  .icon {
+    font-size: 3rem;
+    color: $blue;
+  }
+  .nav {
+    display: flex;
+    gap: 1rem;
+    .link {
+      list-style-type: none;
+    }
+  }
 }
