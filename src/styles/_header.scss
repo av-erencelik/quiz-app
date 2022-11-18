@@ -12,11 +12,27 @@
     font-size: 3rem;
     color: $blue;
   }
-  .nav {
+  .nav-container {
     display: flex;
+    align-items: center;
     gap: 1rem;
-    .link {
-      list-style-type: none;
+    .nav {
+      display: flex;
+      gap: 1rem;
+      .link {
+        list-style-type: none;
+      }
+    }
+    .score-container {
+      .score {
+        color: $blue;
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-bottom: 2px solid $blue;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
     }
   }
 }
