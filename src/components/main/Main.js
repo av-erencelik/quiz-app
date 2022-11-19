@@ -1,11 +1,17 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TopicLevelContext } from "../state/context";
-import { entertainmentTopics, topics } from "../state/topics";
+import {
+  entertainmentTopicCode,
+  entertainmentTopics,
+  topicCodes,
+  topics,
+} from "../state/topics";
 import Game from "./Game";
 import LevelChoose from "./LevelChoose";
 import TopicChoose from "./TopicChoose";
 
 export default function Main() {
+  const [topicCode, setTopicCode] = useState(null);
   const {
     isEntertainment,
     setIsEntertainment,
@@ -18,6 +24,13 @@ export default function Main() {
     difficulty,
     setDifficulty,
   } = useContext(TopicLevelContext);
+  useEffect(() => {
+    if (isEntertainment && isTopicChose) {
+      setTopicCode(entertainmentTopicCode[entertainmentTopics.indexOf(topic)]);
+    } else {
+      setTopicCode(topicCodes[topics.indexOf(topic) - 1]);
+    }
+  }, [topic, isEntertainment, isTopicChose]);
   function onTopicChoose(e) {
     if (e.target.innerText === "Entertainment") {
       setIsEntertainment(true);
@@ -47,6 +60,13 @@ export default function Main() {
         )}
         {isTopicChose && !isDifficultyChose && (
           <LevelChoose onDifficultyChoose={onDifficultyChoose}></LevelChoose>
+        )}
+        {isTopicChose & isDifficultyChose && (
+          <Game
+            topic={topic}
+            difficulty={difficulty}
+            topicCode={topicCode}
+          ></Game>
         )}
       </div>
     </div>

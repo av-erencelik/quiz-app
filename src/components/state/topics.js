@@ -1,6 +1,6 @@
 export const topics = [
-  "General Knowledge",
   "Entertainment",
+  "General Knowledge",
   "Science & Nature",
   "Computers",
   "Mathematics",
@@ -23,6 +23,35 @@ export const entertainmentTopics = [
   "Television",
   "Video Games",
   "Board Games",
+  "Comics",
   "Anime & Manga",
   "Cartoon & Animations",
+];
+export const topicCodes = [
+  "9",
+  "17",
+  "18",
+  "19",
+  "20",
+  "21",
+  "22",
+  "23",
+  "24",
+  "25",
+  "26",
+  "27",
+  "28",
+  "30",
+];
+export const entertainmentTopicCode = [
+  "10",
+  "11",
+  "12",
+  "13",
+  "14",
+  "15",
+  "16",
+  "29",
+  "31",
+  "32",
 ];
