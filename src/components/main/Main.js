@@ -26,7 +26,7 @@ export default function Main() {
     setIsTopicChose(true);
     setTopic(e.target.innerText);
   }
-  function onDiffcultyChoose(e) {
+  function onDifficultyChoose(e) {
     setIsDifficultyChose(true);
     setDifficulty(e.target.innerText);
   }
@@ -46,7 +46,7 @@ export default function Main() {
           ></TopicChoose>
         )}
         {isTopicChose && !isDifficultyChose && (
-          <LevelChoose onDiffcultyChoose={onDiffcultyChoose}></LevelChoose>
+          <LevelChoose onDifficultyChoose={onDifficultyChoose}></LevelChoose>
         )}
       </div>
     </div>

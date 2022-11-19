@@ -1,1 +1,1 @@
-export default function Game() {}
+export default function Game(props) {}
