@@ -1,0 +1,28 @@
+export const topics = [
+  "General Knowledge",
+  "Entertainment",
+  "Science & Nature",
+  "Computers",
+  "Mathematics",
+  "Mythology",
+  "Sports",
+  "Geography",
+  "History",
+  "Politics",
+  "Art",
+  "Celebrities",
+  "Animals",
+  "Vehicles",
+  "Gadgets",
+];
+export const entertainmentTopics = [
+  "Books",
+  "Film",
+  "Music",
+  "Musicals & Theatres",
+  "Television",
+  "Video Games",
+  "Board Games",
+  "Anime & Manga",
+  "Cartoon & Animations",
+];
