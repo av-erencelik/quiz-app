@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
+import { TopicLevelContext } from "../state/context";
 import { entertainmentTopics, topics } from "../state/topics";
 import Game from "./Game";
 import LevelChoose from "./LevelChoose";
@@ -8,15 +9,29 @@ export default function Main() {
   const [allTopics, setAllTopics] = useState(topics);
   const [allEntertainmentTopics, setAllEntertainmentTopics] =
     useState(entertainmentTopics);
-  const [isEntertainment, setIsEntertainment] = useState(false);
-  const [isTopicChose, setIsTopicChose] = useState(false);
-  const [topic, setTopic] = useState("");
+  const {
+    isEntertainment,
+    setIsEntertainment,
+    isTopicChose,
+    setIsTopicChose,
+    isDifficultyChose,
+    setIsDifficultyChose,
+    topic,
+    setTopic,
+    difficulty,
+    setDifficulty,
+  } = useContext(TopicLevelContext);
   function onTopicChoose(e) {
     if (e.target.innerText === "Entertainment") {
       setIsEntertainment(true);
       return;
     }
     setIsTopicChose(true);
+    setTopic(e.target.innerText);
+  }
+  function onDiffcultyChoose(e) {
+    setIsDifficultyChose(true);
+    setDifficulty(e.target.innerText);
   }
   return (
     <div className="main-container">
@@ -32,6 +47,9 @@ export default function Main() {
             topics={allEntertainmentTopics}
             onTopicChoose={onTopicChoose}
           ></TopicChoose>
+        )}
+        {isTopicChose && !isDifficultyChose && (
+          <LevelChoose onDiffcultyChoose={onDiffcultyChoose}></LevelChoose>
         )}
       </div>
     </div>
