@@ -6,9 +6,6 @@ import LevelChoose from "./LevelChoose";
 import TopicChoose from "./TopicChoose";
 
 export default function Main() {
-  const [allTopics, setAllTopics] = useState(topics);
-  const [allEntertainmentTopics, setAllEntertainmentTopics] =
-    useState(entertainmentTopics);
   const {
     isEntertainment,
     setIsEntertainment,
@@ -38,13 +35,13 @@ export default function Main() {
       <div className="container">
         {!isTopicChose && !isEntertainment && (
           <TopicChoose
-            topics={allTopics}
+            topics={topics}
             onTopicChoose={onTopicChoose}
           ></TopicChoose>
         )}
         {!isTopicChose && isEntertainment && (
           <TopicChoose
-            topics={allEntertainmentTopics}
+            topics={entertainmentTopics}
             onTopicChoose={onTopicChoose}
           ></TopicChoose>
         )}
