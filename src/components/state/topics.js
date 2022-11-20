@@ -13,7 +13,6 @@ export const topics = [
   "Celebrities",
   "Animals",
   "Vehicles",
-  "Gadgets",
 ];
 export const entertainmentTopics = [
   "Books",
@@ -41,7 +40,6 @@ export const topicCodes = [
   "26",
   "27",
   "28",
-  "30",
 ];
 export const entertainmentTopicCode = [
   "10",
