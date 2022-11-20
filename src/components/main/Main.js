@@ -61,7 +61,7 @@ export default function Main() {
         {isTopicChose && !isDifficultyChose && (
           <LevelChoose onDifficultyChoose={onDifficultyChoose}></LevelChoose>
         )}
-        {isTopicChose & isDifficultyChose && (
+        {isTopicChose && isDifficultyChose && (
           <Game
             topic={topic}
             difficulty={difficulty}
