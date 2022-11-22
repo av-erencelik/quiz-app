@@ -11,7 +11,7 @@ const choicesSlice = createSlice({
   name: "choices",
   initialState: initialChoicesState,
   reducers: {
-    changeEntertainment(state) {
+    changeIsEntertainment(state) {
       state.isEntertainment = !state.isEntertainment;
     },
     changeIsTopicChose(state) {

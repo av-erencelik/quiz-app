@@ -1,4 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-
-const store = configureStore();
+import scoresReducer from "./scores";
+import choicesReducer from "./choices";
+const store = configureStore({
+  scores: scoresReducer,
+  choices: choicesReducer,
+});
 export default store;
