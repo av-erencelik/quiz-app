@@ -1,30 +1,25 @@
-import { useContext, useEffect, useState } from "react";
-import { TopicLevelContext } from "../state/context";
+import { useEffect, useState } from "react";
 import Question from "./Question";
 import Button from "../ui/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { choicesActions } from "../state/choices";
+import { scoresActions } from "../state/scores";
+
 export default function Game(props) {
   const [questions, setQuestions] = useState("");
   const [isFetchingSuccessful, setIsFetchingSuccessful] = useState(false);
   const [isQuizOver, setIsQuizOver] = useState(false);
-  const {
-    bestScore,
-    setBestScore,
-    Score,
-    setScore,
-    questionNumber,
-    setQuestionNumber,
-    setIsEntertainment,
-    setIsDifficultyChose,
-    setIsTopicChose,
-    wrongAnswers,
-    setWrongAnswers,
-  } = useContext(TopicLevelContext);
+  const dispatch = useDispatch();
+  const bestScore = useSelector((state) => state.scores.bestScore);
+  const Score = useSelector((state) => state.scores.score);
+  const questionNumber = useSelector((state) => state.scores.questionNumber);
+  const wrongAnswers = useSelector((state) => state.scores.wrongAnswers);
   useEffect(() => {
     localStorage.setItem("bestScore", JSON.stringify(bestScore));
   }, [bestScore]);
   useEffect(() => {
     if (Score > bestScore) {
-      setBestScore(Score);
+      dispatch(scoresActions.setBestScore(Score));
     }
   }, [Score]);
   useEffect(() => {
@@ -53,9 +48,9 @@ export default function Game(props) {
         setQuestions(fetchedQuestions);
       } catch (error) {
         alert(error);
-        setIsEntertainment(false);
-        setIsTopicChose(false);
-        setIsDifficultyChose(false);
+        dispatch(choicesActions.changeIsEntertainment());
+        dispatch(choicesActions.changeIsTopicChose());
+        dispatch(choicesActions.changeIsDifficultyChose());
         return;
       }
       setIsFetchingSuccessful(true);
@@ -66,22 +61,16 @@ export default function Game(props) {
   function incrementQuestionNumber() {
     if (questionNumber === 9) {
       setIsQuizOver(true);
-      setQuestionNumber(0);
+      dispatch(scoresActions.setQuestionNumber(0));
       return;
     }
-    setQuestionNumber((prevState) => {
-      return prevState + 1;
-    });
+    dispatch(scoresActions.incrementQuestionNumber());
   }
   function onCorrectAnswer() {
-    setScore((prevState) => {
-      return prevState + 1;
-    });
+    dispatch(scoresActions.incrementScore());
   }
   function onWrongAnswer() {
-    setWrongAnswers((prevState) => {
-      return prevState + 1;
-    });
+    dispatch(scoresActions.incrementWrongAnswers());
   }
   function sortRandomly(answers) {
     let array = answers;
@@ -94,11 +83,11 @@ export default function Game(props) {
     return array;
   }
   function newGame() {
-    setIsEntertainment(false);
-    setIsTopicChose(false);
-    setIsDifficultyChose(false);
-    setWrongAnswers(0);
-    setScore(0);
+    dispatch(choicesActions.changeIsEntertainment());
+    dispatch(choicesActions.changeIsTopicChose());
+    dispatch(choicesActions.changeIsDifficultyChose());
+    dispatch(scoresActions.setWrongAnswers(0));
+    dispatch(scoresActions.setScore(0));
   }
   return (
     <div className="game-container">

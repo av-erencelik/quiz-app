@@ -23,6 +23,15 @@ const scoresSlice = createSlice({
     setWrongAnswers(state, action) {
       state.wrongAnswers = action.payload;
     },
+    incrementQuestionNumber(state) {
+      state.questionNumber++;
+    },
+    incrementWrongAnswers(state) {
+      state.wrongAnswers++;
+    },
+    incrementScore(state) {
+      state.score++;
+    },
   },
 });
 

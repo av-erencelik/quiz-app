@@ -20,7 +20,6 @@ export default function Question(props) {
     setIsQuestionAnswered(true);
     if (e.target.innerHTML === correctAnswer) {
       props.onCorrectAnswer();
-      console.log(e.target.classList);
       e.target.classList.add("success");
     } else {
       props.onWrongAnswer();

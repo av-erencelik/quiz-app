@@ -18,7 +18,7 @@ const choicesSlice = createSlice({
       state.isTopicChose = !state.isTopicChose;
     },
     changeIsDifficultyChose(state) {
-      state.isDifficultyChose = !state.isTopicChose;
+      state.isDifficultyChose = !state.isDifficultyChose;
     },
     setTopic(state, action) {
       state.topic = action.payload;
