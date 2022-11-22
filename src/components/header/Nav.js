@@ -1,22 +1,18 @@
-import { useContext } from "react";
-import { TopicLevelContext } from "../state/context";
+import { useDispatch } from "react-redux";
+import { choicesActions } from "../state/choices";
+import { scoresActions } from "../state/scores";
 import Button from "../ui/Button";
 import Score from "./Score";
 
 export default function Nav() {
-  const {
-    setIsEntertainment,
-    setIsTopicChose,
-    setIsDifficultyChose,
-    setScore,
-    setWrongAnswers,
-  } = useContext(TopicLevelContext);
+  const dispatch = useDispatch();
+
   function newGame() {
-    setIsEntertainment(false);
-    setIsTopicChose(false);
-    setIsDifficultyChose(false);
-    setWrongAnswers(0);
-    setScore(0);
+    dispatch(choicesActions.changeIsEntertainment());
+    dispatch(choicesActions.changeIsTopicChose());
+    dispatch(choicesActions.changeIsDifficultyChose());
+    dispatch(scoresActions.setWrongAnswers(0));
+    dispatch(scoresActions.setScore(0));
   }
 
   return (

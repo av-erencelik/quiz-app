@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import ContextProvider from "./components/state/context";
+import { Provider } from "react-redux";
+import store from "./components/state/redux";
 import App from "./containers/App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ContextProvider>
+  <Provider store={store}>
     <App />
-  </ContextProvider>
+  </Provider>
 );

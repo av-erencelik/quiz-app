@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react";
-import { TopicLevelContext } from "../state/context";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { choicesActions } from "../state/choices";
 import {
   entertainmentTopicCode,
   entertainmentTopics,
@@ -9,21 +10,17 @@ import {
 import Game from "./Game";
 import LevelChoose from "./LevelChoose";
 import TopicChoose from "./TopicChoose";
-
 export default function Main() {
+  const dispatch = useDispatch();
+  const isEntertainment = useSelector((state) => state.choices.isEntertainment);
+  const isDifficultyChose = useSelector(
+    (state) => state.choices.isDifficultyChose
+  );
+  const isTopicChose = useSelector((state) => state.choices.isTopicChose);
+  const topic = useSelector((state) => state.choices.topic);
+  const difficulty = useSelector((state) => state.choices.difficulty);
   const [topicCode, setTopicCode] = useState(null);
-  const {
-    isEntertainment,
-    setIsEntertainment,
-    isTopicChose,
-    setIsTopicChose,
-    isDifficultyChose,
-    setIsDifficultyChose,
-    topic,
-    setTopic,
-    difficulty,
-    setDifficulty,
-  } = useContext(TopicLevelContext);
+
   useEffect(() => {
     if (isEntertainment && isTopicChose) {
       setTopicCode(entertainmentTopicCode[entertainmentTopics.indexOf(topic)]);
@@ -33,15 +30,15 @@ export default function Main() {
   }, [topic, isEntertainment, isTopicChose]);
   function onTopicChoose(e) {
     if (e.target.innerText === "Entertainment") {
-      setIsEntertainment(true);
+      dispatch(choicesActions.changeIsEntertainment());
       return;
     }
-    setIsTopicChose(true);
-    setTopic(e.target.innerText);
+    dispatch(choicesActions.changeIsTopicChose());
+    dispatch(choicesActions.setTopic(e.target.innerText));
   }
   function onDifficultyChoose(e) {
-    setIsDifficultyChose(true);
-    setDifficulty(e.target.innerText);
+    dispatch(choicesActions.changeIsDifficultyChose());
+    dispatch(choicesActions.setDifficulty(e.target.innerText));
   }
   return (
     <div className="main-container">
